@@ -13,11 +13,7 @@ pipeline {
              }
                 
     
-         stage ('Testing Stage') {
-             steps {
-                     sh 'mvn compile'
-                 }
-             }
+         
         
      
          stage ('Deployment Stage') {

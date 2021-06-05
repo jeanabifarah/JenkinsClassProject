@@ -8,22 +8,29 @@ pipeline {
      stages {
          stage ('Compile Stage') {
              steps {
-                     sh 'mvn clean compile'
+                     sh 'mvn clean'
                  }
              }
                 
     
          stage ('Testing Stage') {
              steps {
-                     sh 'mvn test'
+                     sh 'mvn compile'
                  }
              }
+        
+     
+         stage ('Deployment Stage') {
+             steps {
+                     sh 'mvn test'
+                 }
              
              post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
                 }
-             }      
+            }
+         }       
     }
      
 }
